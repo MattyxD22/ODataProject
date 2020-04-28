@@ -58,9 +58,12 @@ namespace projectNavision
         IEdmModel GetEdmModel()
         {
             var odataBuilder = new ODataConventionModelBuilder();
-            odataBuilder.EntitySet<PlaceHolderModel>("placeholder");
+            odataBuilder.EntitySet<Student>("Students");
 
             return odataBuilder.GetEdmModel();
         }
+
+        
+
     }
 }
