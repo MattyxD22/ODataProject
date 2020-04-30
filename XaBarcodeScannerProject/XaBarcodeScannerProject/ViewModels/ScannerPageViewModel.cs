@@ -4,6 +4,7 @@ using System.Text;
 using Xamarin.Forms;
 using XaBarcodeScannerProject.Views;
 using ZXing.Net.Mobile.Forms;
+using System.Threading.Tasks;
 
 namespace XaBarcodeScannerProject.ViewModels
 {
@@ -19,12 +20,14 @@ namespace XaBarcodeScannerProject.ViewModels
               OnPropertyChanged();
             }
         }
+        
 
         public Command Scan => new Command(async () =>
         {
             var scanPage = new ZXingScannerPage();
+            
             // Navigate to our scanner page
-            await Navigation.PushAsync(scanPage);
+            await Navigation.PushModalAsync(scanPage);
 
             scanPage.OnScanResult += (result) =>
             {
@@ -35,7 +38,9 @@ namespace XaBarcodeScannerProject.ViewModels
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await Navigation.PopAsync();
-                    await DisplayAlert("Scanned Barcode", result.Text, "OK");
+                    await DisplayAlert(
+                        "Scanned Barcode", result.Text, "OK");
+                    
                 });
             };
 

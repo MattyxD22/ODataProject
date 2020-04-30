@@ -9,7 +9,7 @@
         <StackLayout>
             <Label Text="this is MVVM"/>
             <Button Text="Scan" Command="{Binding Scan}"></Button>
-            <Label Text=""/>
+            <Label Text="" x:Name="barCodeLabel"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

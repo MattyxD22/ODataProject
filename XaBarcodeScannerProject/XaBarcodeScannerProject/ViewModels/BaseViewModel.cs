@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 
 namespace XaBarcodeScannerProject.ViewModels
 {
-   public class BaseViewModel : Page, INotifyPropertyChanged 
+   public class BaseViewModel : Page,INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -15,5 +15,7 @@ namespace XaBarcodeScannerProject.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+
+        
     }
 }
