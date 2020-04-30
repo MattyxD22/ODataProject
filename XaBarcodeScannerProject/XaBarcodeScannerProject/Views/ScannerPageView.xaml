@@ -6,10 +6,9 @@
              mc:Ignorable="d"
              x:Class="XaBarcodeScannerProject.Views.ScannerPageView">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="this is MVVM"/>
-            <Button Text="Scan" Command="{Binding Scan}"></Button>
-            <Label Text="" x:Name="barCodeLabel"/>
+        <StackLayout>           
+            <Label Text="{Binding ScannedCode}"/>
+            <Button Text="Scan with Code behind" Clicked="Button_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
