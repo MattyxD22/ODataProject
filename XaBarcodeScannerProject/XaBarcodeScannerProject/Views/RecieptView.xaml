@@ -6,10 +6,44 @@
              mc:Ignorable="d"
              x:Class="XaBarcodeScannerProject.Views.RecieptView">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+
+            <Label Grid.Row="0"
+                Text="Receipt"
+                VerticalOptions="StartAndExpand"
+                HorizontalOptions="CenterAndExpand"
+                />
+
+            <ListView 
+                x:Name="ListViewReceipt"
+                ItemsSource="{Binding Products}"
+                VerticalOptions="Center" 
+                HorizontalOptions="CenterAndExpand"
+                
+                Grid.Row="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{Binding ItemName}"/>
+                                <Label Text="{Binding ItemAmount}"/>
+                                <Label Text="{Binding ItemPrice}"/>
+                                <Button Text="+" HorizontalOptions="EndAndExpand" Command="{Binding IncreaseAmountCMD}"/>
+                                <Button Text="-" Command="{Binding IncreaseAmountCMD}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Label 
+                Grid.Row="2"
+                Text="Total Price"
+                VerticalOptions="EndAndExpand"
+                />
+            
+            
+            
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

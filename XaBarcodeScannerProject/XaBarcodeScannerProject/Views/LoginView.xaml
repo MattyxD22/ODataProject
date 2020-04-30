@@ -15,19 +15,21 @@
             <Entry
                x:Name="EmailEntry"
                Placeholder="Email"
+               Text="{Binding UserEmail}"
                AbsoluteLayout.LayoutBounds="165,100"
                 />
 
             <Entry 
                 x:Name="PasswordEntry"
                 Placeholder="Password"
+                Text="{Binding UserPassword}"
                 AbsoluteLayout.LayoutBounds="165,150"
                 />
 
             <Button
                 Text="Login"
                 AbsoluteLayout.LayoutBounds="75,200"
-                Command="{Binding getTextCMD}"
+                Command="{Binding GetTextCMD}"
                 />
 
 
