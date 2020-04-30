@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using XaBarcodeScannerProject.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +15,7 @@ namespace XaBarcodeScannerProject.Views
         public LoginView()
         {
             InitializeComponent();
+            BindingContext = new LoginViewModel();
         }
     }
 }
