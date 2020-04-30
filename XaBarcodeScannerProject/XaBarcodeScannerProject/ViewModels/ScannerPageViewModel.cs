@@ -19,33 +19,12 @@ namespace XaBarcodeScannerProject.ViewModels
             { scannedCode = value;
               OnPropertyChanged();
             }
-        }
-        
+        }                      
 
-        public Command Scan => new Command(async () =>
+        public async void OnScanClicked(ZXing.Result result)
         {
-            var scanPage = new ZXingScannerPage();
-            
-            // Navigate to our scanner page
-            await Navigation.PushModalAsync(scanPage);
-
-            scanPage.OnScanResult += (result) =>
-            {
-                // Stop scanning
-                scanPage.IsScanning = false;
-
-                // Pop the page and show the result
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await Navigation.PopAsync();
-                    await DisplayAlert(
-                        "Scanned Barcode", result.Text, "OK");
-                    
-                });
-            };
-
-        });
-
+            ScannedCode = result.Text;
+        }
 
     }
 }
