@@ -4,13 +4,12 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
-             x:Class="XAOData.Views.ScannerPage">
+             x:Class="XaBarcodeScannerProject.Views.RecieptView">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="This is MVVM"/>
-            <Button Text="Scan" Command="{Binding Scan}"></Button>
-            <Label Text="{Binding myScannedCode}" TextColor="Red" HorizontalOptions="Center"></Label>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

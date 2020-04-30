@@ -6,17 +6,15 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using XAOData.ViewModels;
 
-namespace XAOData.Views
+namespace XaBarcodeScannerProject.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ScannerPage : ContentPage
+    public partial class RegistrationView : ContentPage
     {
-        public ScannerPage()
+        public RegistrationView()
         {
             InitializeComponent();
-            BindingContext = new ScannerPageViewModel();
         }
     }
 }

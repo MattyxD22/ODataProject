@@ -4,11 +4,12 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="XAOData.MainPage">
-
-    <StackLayout>
-        <Button Text="Scan" Clicked="Button_Clicked"></Button>
-        <Label Text=" " x:Name="myScannedCode" TextColor="Red" HorizontalOptions="Center"></Label>
-    </StackLayout>
-
+             x:Class="XaBarcodeScannerProject.Views.RegistrationView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
