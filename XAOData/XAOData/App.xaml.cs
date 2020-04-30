@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XAOData.Views;
 
 namespace XAOData
 {
@@ -10,7 +11,8 @@ namespace XAOData
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new ScannerPage());
+
         }
 
         protected override void OnStart()

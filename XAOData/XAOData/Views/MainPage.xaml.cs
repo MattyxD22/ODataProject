@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using ZXing.Net.Mobile.Forms;
+using ZXing.Net.Mobile;
 
 namespace XAOData
 {
@@ -15,10 +16,10 @@ namespace XAOData
         {
             InitializeComponent();
         }
-
+        ZXingScannerPage scanner = new ZXingScannerPage();
         private void Button_Clicked(object sender, EventArgs e)
         {
-            var scanner = new ZXingScannerPage();
+            
             Navigation.PushAsync(scanner);
 
             scanner.OnScanResult += (result) => {
@@ -26,7 +27,7 @@ namespace XAOData
                 Device.BeginInvokeOnMainThread(async () => 
                 {
 
-                    Navigation.PopAsync();
+                   await Navigation.PopAsync();
 
                     myScannedCode.Text = result.Text;
                 
