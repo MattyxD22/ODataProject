@@ -14,8 +14,7 @@ namespace XaBarcodeScannerProject.ViewModels
         {
             get { return scannedCode; }
             set 
-            { scannedCode = value; 
-              
+            { scannedCode = value;
             }
         }
 
