@@ -9,7 +9,7 @@
         <Grid>
 
             <Label Grid.Row="0"
-                Text="Receipt"
+                Text="{Binding ItemName }"
                 VerticalOptions="StartAndExpand"
                 HorizontalOptions="CenterAndExpand"
                 />

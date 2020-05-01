@@ -7,31 +7,35 @@
              x:Class="XaBarcodeScannerProject.Views.RegistrationView">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <StackLayout Grid.Column="1" Grid.Row="0">
-            <Label Text="Registration Page" FontSize="25" TextColor="Black" HorizontalOptions="Center"/>
-        </StackLayout>
+
+        <Label  Grid.Column="1" Grid.Row="0" Text="Registration Page" FontSize="25" TextColor="Black" HorizontalOptions="Center"/>
 
         <StackLayout Grid.Column="1" Grid.Row="1">
-            <Entry Placeholder="Firstname"/>
-            <Entry Placeholder="Lastname"/>
-            <Entry Placeholder="Email"/>
-            <Entry Placeholder="Password" IsPassword="True"/>
+            <Entry Placeholder="Firstname" Text="{Binding FirstNameRVM}"/>
+            <Entry Placeholder="Lastname" Text="{Binding LastNameRVM}"/>
+            <Entry Placeholder="Email" Text="{Binding EmailRVM}"/>
+            <Entry Placeholder="Password" IsPassword="True" Text="{Binding PasswordRVM }"/>
+            <Entry Placeholder="Confirm Password" IsPassword="True" Text="{Binding ConfirmPasswordRVM}"/>
+            <Label Text="Passwords not identical" TextColor="Red" IsVisible="{Binding IsNotIdentical}"/>
         </StackLayout>
-        <StackLayout Grid.Row="5" Grid.Column="1">
-            <Button Text="Register" TextColor="Black" Command="{Binding Register}"/>
+
+        <StackLayout Grid.Row="3" Grid.Column="1">
+            <Button Text="Sign Up" TextColor="Black" Command="{Binding SignUp}"/>
             <Button Text="Go Back" TextColor="Black" Command="{Binding GoBack}"/>
         </StackLayout>
 
     </Grid>
+
+
 </ContentPage>

@@ -12,6 +12,7 @@ namespace XaBarcodeScannerProject
             InitializeComponent();
 
             MainPage = new NavigationPage(new RegistrationView());
+            //MainPage = new NavigationPage(new RecieptView());
         }
 
         protected override void OnStart()
