@@ -1,19 +1,16 @@
 ﻿{
   "ProviderId": "Microsoft.VisualStudio.ConnectedService.Wcf",
   "Version": "15.0.40203.910",
-  "GettingStartedDocument": {
-    "Uri": "https://go.microsoft.com/fwlink/?linkid=858517"
-  },
   "ExtendedData": {
     "inputs": [
-      "http://Mathias:7047/BC140/WS/CRONUS%20International%20Ltd./Page/CustomerPageRema"
+      "http://Mathias:7047/BC140/WS/CRONUS%20International%20Ltd./Codeunit/Letters"
     ],
     "collectionTypes": [
       "System.Array",
       "System.Collections.Generic.Dictionary`2"
     ],
     "namespaceMappings": [
-      "*, RemaCustomer"
+      "*, Letters"
     ],
     "references": [
       "Microsoft.AspNetCore.OData, {Microsoft.AspNetCore.OData, 7.4.0-beta2}",

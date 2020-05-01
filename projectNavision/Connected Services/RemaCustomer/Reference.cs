@@ -12,54 +12,651 @@ namespace RemaCustomer
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="urn:microsoft-dynamics-schemas/codeunit/CustomerCodeUnitRema", ConfigurationName="RemaCustomer.CustomerCodeUnitRema_Port")]
-    public interface CustomerCodeUnitRema_Port
+    [System.ServiceModel.ServiceContractAttribute(Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", ConfigurationName="RemaCustomer.CustomerPageRema_Port")]
+    public interface CustomerPageRema_Port
     {
         
-        [System.ServiceModel.OperationContractAttribute(Action="urn:microsoft-dynamics-schemas/codeunit/CustomerCodeUnitRema:GetCustomerName", ReplyAction="*")]
-        System.Threading.Tasks.Task<RemaCustomer.GetCustomerName_Result> GetCustomerNameAsync(RemaCustomer.GetCustomerName request);
+        [System.ServiceModel.OperationContractAttribute(Action="urn:microsoft-dynamics-schemas/page/customerpagerema:Read", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<RemaCustomer.Read_Result> ReadAsync(RemaCustomer.Read request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:microsoft-dynamics-schemas/page/customerpagerema:ReadByRecId", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<RemaCustomer.ReadByRecId_Result> ReadByRecIdAsync(RemaCustomer.ReadByRecId request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:microsoft-dynamics-schemas/page/customerpagerema:ReadMultiple", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<RemaCustomer.ReadMultiple_Result> ReadMultipleAsync(RemaCustomer.ReadMultiple request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:microsoft-dynamics-schemas/page/customerpagerema:IsUpdated", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<RemaCustomer.IsUpdated_Result> IsUpdatedAsync(RemaCustomer.IsUpdated request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:microsoft-dynamics-schemas/page/customerpagerema:GetRecIdFromKey", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<RemaCustomer.GetRecIdFromKey_Result> GetRecIdFromKeyAsync(RemaCustomer.GetRecIdFromKey request);
+        
+        // CODEGEN: Generating message contract since the operation has multiple return values.
+        [System.ServiceModel.OperationContractAttribute(Action="urn:microsoft-dynamics-schemas/page/customerpagerema:Create", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<RemaCustomer.Create_Result> CreateAsync(RemaCustomer.Create request);
+        
+        // CODEGEN: Generating message contract since the operation has multiple return values.
+        [System.ServiceModel.OperationContractAttribute(Action="urn:microsoft-dynamics-schemas/page/customerpagerema:CreateMultiple", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<RemaCustomer.CreateMultiple_Result> CreateMultipleAsync(RemaCustomer.CreateMultiple request);
+        
+        // CODEGEN: Generating message contract since the operation has multiple return values.
+        [System.ServiceModel.OperationContractAttribute(Action="urn:microsoft-dynamics-schemas/page/customerpagerema:Update", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<RemaCustomer.Update_Result> UpdateAsync(RemaCustomer.Update request);
+        
+        // CODEGEN: Generating message contract since the operation has multiple return values.
+        [System.ServiceModel.OperationContractAttribute(Action="urn:microsoft-dynamics-schemas/page/customerpagerema:UpdateMultiple", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<RemaCustomer.UpdateMultiple_Result> UpdateMultipleAsync(RemaCustomer.UpdateMultiple request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:microsoft-dynamics-schemas/page/customerpagerema:Delete", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<RemaCustomer.Delete_Result> DeleteAsync(RemaCustomer.Delete request);
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema")]
+    public partial class CustomerPageRema
+    {
+        
+        private string keyField;
+        
+        private long idField;
+        
+        private bool idFieldSpecified;
+        
+        private string firstNameField;
+        
+        private string lastNameField;
+        
+        private string emailField;
+        
+        private string passwordField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string Key
+        {
+            get
+            {
+                return this.keyField;
+            }
+            set
+            {
+                this.keyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public long ID
+        {
+            get
+            {
+                return this.idField;
+            }
+            set
+            {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool IDSpecified
+        {
+            get
+            {
+                return this.idFieldSpecified;
+            }
+            set
+            {
+                this.idFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string FirstName
+        {
+            get
+            {
+                return this.firstNameField;
+            }
+            set
+            {
+                this.firstNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string LastName
+        {
+            get
+            {
+                return this.lastNameField;
+            }
+            set
+            {
+                this.lastNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string Email
+        {
+            get
+            {
+                return this.emailField;
+            }
+            set
+            {
+                this.emailField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public string Password
+        {
+            get
+            {
+                return this.passwordField;
+            }
+            set
+            {
+                this.passwordField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema")]
+    public partial class CustomerPageRema_Filter
+    {
+        
+        private CustomerPageRema_Fields fieldField;
+        
+        private string criteriaField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public CustomerPageRema_Fields Field
+        {
+            get
+            {
+                return this.fieldField;
+            }
+            set
+            {
+                this.fieldField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Criteria
+        {
+            get
+            {
+                return this.criteriaField;
+            }
+            set
+            {
+                this.criteriaField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema")]
+    public enum CustomerPageRema_Fields
+    {
+        
+        /// <remarks/>
+        ID,
+        
+        /// <remarks/>
+        FirstName,
+        
+        /// <remarks/>
+        LastName,
+        
+        /// <remarks/>
+        Email,
+        
+        /// <remarks/>
+        Password,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetCustomerName", WrapperNamespace="urn:microsoft-dynamics-schemas/codeunit/CustomerCodeUnitRema", IsWrapped=true)]
-    public partial class GetCustomerName
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Read", WrapperNamespace="urn:microsoft-dynamics-schemas/page/customerpagerema", IsWrapped=true)]
+    public partial class Read
     {
         
-        public GetCustomerName()
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", Order=0)]
+        public long ID;
+        
+        public Read()
         {
+        }
+        
+        public Read(long ID)
+        {
+            this.ID = ID;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetCustomerName_Result", WrapperNamespace="urn:microsoft-dynamics-schemas/codeunit/CustomerCodeUnitRema", IsWrapped=true)]
-    public partial class GetCustomerName_Result
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Read_Result", WrapperNamespace="urn:microsoft-dynamics-schemas/page/customerpagerema", IsWrapped=true)]
+    public partial class Read_Result
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/codeunit/CustomerCodeUnitRema", Order=0)]
-        public string return_value;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", Order=0)]
+        public RemaCustomer.CustomerPageRema CustomerPageRema;
         
-        public GetCustomerName_Result()
+        public Read_Result()
         {
         }
         
-        public GetCustomerName_Result(string return_value)
+        public Read_Result(RemaCustomer.CustomerPageRema CustomerPageRema)
         {
-            this.return_value = return_value;
+            this.CustomerPageRema = CustomerPageRema;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ReadByRecId", WrapperNamespace="urn:microsoft-dynamics-schemas/page/customerpagerema", IsWrapped=true)]
+    public partial class ReadByRecId
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", Order=0)]
+        public string recId;
+        
+        public ReadByRecId()
+        {
+        }
+        
+        public ReadByRecId(string recId)
+        {
+            this.recId = recId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ReadByRecId_Result", WrapperNamespace="urn:microsoft-dynamics-schemas/page/customerpagerema", IsWrapped=true)]
+    public partial class ReadByRecId_Result
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", Order=0)]
+        public RemaCustomer.CustomerPageRema CustomerPageRema;
+        
+        public ReadByRecId_Result()
+        {
+        }
+        
+        public ReadByRecId_Result(RemaCustomer.CustomerPageRema CustomerPageRema)
+        {
+            this.CustomerPageRema = CustomerPageRema;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ReadMultiple", WrapperNamespace="urn:microsoft-dynamics-schemas/page/customerpagerema", IsWrapped=true)]
+    public partial class ReadMultiple
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("filter")]
+        public RemaCustomer.CustomerPageRema_Filter[] filter;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", Order=1)]
+        public string bookmarkKey;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", Order=2)]
+        public int setSize;
+        
+        public ReadMultiple()
+        {
+        }
+        
+        public ReadMultiple(RemaCustomer.CustomerPageRema_Filter[] filter, string bookmarkKey, int setSize)
+        {
+            this.filter = filter;
+            this.bookmarkKey = bookmarkKey;
+            this.setSize = setSize;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ReadMultiple_Result", WrapperNamespace="urn:microsoft-dynamics-schemas/page/customerpagerema", IsWrapped=true)]
+    public partial class ReadMultiple_Result
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ReadMultiple_Result", Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
+        public RemaCustomer.CustomerPageRema[] ReadMultiple_Result1;
+        
+        public ReadMultiple_Result()
+        {
+        }
+        
+        public ReadMultiple_Result(RemaCustomer.CustomerPageRema[] ReadMultiple_Result1)
+        {
+            this.ReadMultiple_Result1 = ReadMultiple_Result1;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="IsUpdated", WrapperNamespace="urn:microsoft-dynamics-schemas/page/customerpagerema", IsWrapped=true)]
+    public partial class IsUpdated
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", Order=0)]
+        public string Key;
+        
+        public IsUpdated()
+        {
+        }
+        
+        public IsUpdated(string Key)
+        {
+            this.Key = Key;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="IsUpdated_Result", WrapperNamespace="urn:microsoft-dynamics-schemas/page/customerpagerema", IsWrapped=true)]
+    public partial class IsUpdated_Result
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="IsUpdated_Result", Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", Order=0)]
+        public bool IsUpdated_Result1;
+        
+        public IsUpdated_Result()
+        {
+        }
+        
+        public IsUpdated_Result(bool IsUpdated_Result1)
+        {
+            this.IsUpdated_Result1 = IsUpdated_Result1;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetRecIdFromKey", WrapperNamespace="urn:microsoft-dynamics-schemas/page/customerpagerema", IsWrapped=true)]
+    public partial class GetRecIdFromKey
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", Order=0)]
+        public string Key;
+        
+        public GetRecIdFromKey()
+        {
+        }
+        
+        public GetRecIdFromKey(string Key)
+        {
+            this.Key = Key;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetRecIdFromKey_Result", WrapperNamespace="urn:microsoft-dynamics-schemas/page/customerpagerema", IsWrapped=true)]
+    public partial class GetRecIdFromKey_Result
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetRecIdFromKey_Result", Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", Order=0)]
+        public string GetRecIdFromKey_Result1;
+        
+        public GetRecIdFromKey_Result()
+        {
+        }
+        
+        public GetRecIdFromKey_Result(string GetRecIdFromKey_Result1)
+        {
+            this.GetRecIdFromKey_Result1 = GetRecIdFromKey_Result1;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Create", WrapperNamespace="urn:microsoft-dynamics-schemas/page/customerpagerema", IsWrapped=true)]
+    public partial class Create
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", Order=0)]
+        public RemaCustomer.CustomerPageRema CustomerPageRema;
+        
+        public Create()
+        {
+        }
+        
+        public Create(RemaCustomer.CustomerPageRema CustomerPageRema)
+        {
+            this.CustomerPageRema = CustomerPageRema;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Create_Result", WrapperNamespace="urn:microsoft-dynamics-schemas/page/customerpagerema", IsWrapped=true)]
+    public partial class Create_Result
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", Order=0)]
+        public RemaCustomer.CustomerPageRema CustomerPageRema;
+        
+        public Create_Result()
+        {
+        }
+        
+        public Create_Result(RemaCustomer.CustomerPageRema CustomerPageRema)
+        {
+            this.CustomerPageRema = CustomerPageRema;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CreateMultiple", WrapperNamespace="urn:microsoft-dynamics-schemas/page/customerpagerema", IsWrapped=true)]
+    public partial class CreateMultiple
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
+        public RemaCustomer.CustomerPageRema[] CustomerPageRema_List;
+        
+        public CreateMultiple()
+        {
+        }
+        
+        public CreateMultiple(RemaCustomer.CustomerPageRema[] CustomerPageRema_List)
+        {
+            this.CustomerPageRema_List = CustomerPageRema_List;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CreateMultiple_Result", WrapperNamespace="urn:microsoft-dynamics-schemas/page/customerpagerema", IsWrapped=true)]
+    public partial class CreateMultiple_Result
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
+        public RemaCustomer.CustomerPageRema[] CustomerPageRema_List;
+        
+        public CreateMultiple_Result()
+        {
+        }
+        
+        public CreateMultiple_Result(RemaCustomer.CustomerPageRema[] CustomerPageRema_List)
+        {
+            this.CustomerPageRema_List = CustomerPageRema_List;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Update", WrapperNamespace="urn:microsoft-dynamics-schemas/page/customerpagerema", IsWrapped=true)]
+    public partial class Update
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", Order=0)]
+        public RemaCustomer.CustomerPageRema CustomerPageRema;
+        
+        public Update()
+        {
+        }
+        
+        public Update(RemaCustomer.CustomerPageRema CustomerPageRema)
+        {
+            this.CustomerPageRema = CustomerPageRema;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Update_Result", WrapperNamespace="urn:microsoft-dynamics-schemas/page/customerpagerema", IsWrapped=true)]
+    public partial class Update_Result
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", Order=0)]
+        public RemaCustomer.CustomerPageRema CustomerPageRema;
+        
+        public Update_Result()
+        {
+        }
+        
+        public Update_Result(RemaCustomer.CustomerPageRema CustomerPageRema)
+        {
+            this.CustomerPageRema = CustomerPageRema;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateMultiple", WrapperNamespace="urn:microsoft-dynamics-schemas/page/customerpagerema", IsWrapped=true)]
+    public partial class UpdateMultiple
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
+        public RemaCustomer.CustomerPageRema[] CustomerPageRema_List;
+        
+        public UpdateMultiple()
+        {
+        }
+        
+        public UpdateMultiple(RemaCustomer.CustomerPageRema[] CustomerPageRema_List)
+        {
+            this.CustomerPageRema_List = CustomerPageRema_List;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateMultiple_Result", WrapperNamespace="urn:microsoft-dynamics-schemas/page/customerpagerema", IsWrapped=true)]
+    public partial class UpdateMultiple_Result
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
+        public RemaCustomer.CustomerPageRema[] CustomerPageRema_List;
+        
+        public UpdateMultiple_Result()
+        {
+        }
+        
+        public UpdateMultiple_Result(RemaCustomer.CustomerPageRema[] CustomerPageRema_List)
+        {
+            this.CustomerPageRema_List = CustomerPageRema_List;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Delete", WrapperNamespace="urn:microsoft-dynamics-schemas/page/customerpagerema", IsWrapped=true)]
+    public partial class Delete
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", Order=0)]
+        public string Key;
+        
+        public Delete()
+        {
+        }
+        
+        public Delete(string Key)
+        {
+            this.Key = Key;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Delete_Result", WrapperNamespace="urn:microsoft-dynamics-schemas/page/customerpagerema", IsWrapped=true)]
+    public partial class Delete_Result
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="Delete_Result", Namespace="urn:microsoft-dynamics-schemas/page/customerpagerema", Order=0)]
+        public bool Delete_Result1;
+        
+        public Delete_Result()
+        {
+        }
+        
+        public Delete_Result(bool Delete_Result1)
+        {
+            this.Delete_Result1 = Delete_Result1;
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    public interface CustomerCodeUnitRema_PortChannel : RemaCustomer.CustomerCodeUnitRema_Port, System.ServiceModel.IClientChannel
+    public interface CustomerPageRema_PortChannel : RemaCustomer.CustomerPageRema_Port, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    public partial class CustomerCodeUnitRema_PortClient : System.ServiceModel.ClientBase<RemaCustomer.CustomerCodeUnitRema_Port>, RemaCustomer.CustomerCodeUnitRema_Port
+    public partial class CustomerPageRema_PortClient : System.ServiceModel.ClientBase<RemaCustomer.CustomerPageRema_Port>, RemaCustomer.CustomerPageRema_Port
     {
         
         /// <summary>
@@ -69,49 +666,137 @@ namespace RemaCustomer
         /// <param name="clientCredentials">The client credentials</param>
         static partial void ConfigureEndpoint(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Description.ClientCredentials clientCredentials);
         
-        public CustomerCodeUnitRema_PortClient() : 
-                base(CustomerCodeUnitRema_PortClient.GetDefaultBinding(), CustomerCodeUnitRema_PortClient.GetDefaultEndpointAddress())
+        public CustomerPageRema_PortClient() : 
+                base(CustomerPageRema_PortClient.GetDefaultBinding(), CustomerPageRema_PortClient.GetDefaultEndpointAddress())
         {
-            this.Endpoint.Name = EndpointConfiguration.CustomerCodeUnitRema_Port.ToString();
+            this.Endpoint.Name = EndpointConfiguration.CustomerPageRema_Port.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public CustomerCodeUnitRema_PortClient(EndpointConfiguration endpointConfiguration) : 
-                base(CustomerCodeUnitRema_PortClient.GetBindingForEndpoint(endpointConfiguration), CustomerCodeUnitRema_PortClient.GetEndpointAddress(endpointConfiguration))
-        {
-            this.Endpoint.Name = endpointConfiguration.ToString();
-            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
-        }
-        
-        public CustomerCodeUnitRema_PortClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
-                base(CustomerCodeUnitRema_PortClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
+        public CustomerPageRema_PortClient(EndpointConfiguration endpointConfiguration) : 
+                base(CustomerPageRema_PortClient.GetBindingForEndpoint(endpointConfiguration), CustomerPageRema_PortClient.GetEndpointAddress(endpointConfiguration))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public CustomerCodeUnitRema_PortClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(CustomerCodeUnitRema_PortClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        public CustomerPageRema_PortClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
+                base(CustomerPageRema_PortClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public CustomerCodeUnitRema_PortClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public CustomerPageRema_PortClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(CustomerPageRema_PortClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        {
+            this.Endpoint.Name = endpointConfiguration.ToString();
+            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
+        }
+        
+        public CustomerPageRema_PortClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress)
         {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RemaCustomer.GetCustomerName_Result> RemaCustomer.CustomerCodeUnitRema_Port.GetCustomerNameAsync(RemaCustomer.GetCustomerName request)
+        System.Threading.Tasks.Task<RemaCustomer.Read_Result> RemaCustomer.CustomerPageRema_Port.ReadAsync(RemaCustomer.Read request)
         {
-            return base.Channel.GetCustomerNameAsync(request);
+            return base.Channel.ReadAsync(request);
         }
         
-        public System.Threading.Tasks.Task<RemaCustomer.GetCustomerName_Result> GetCustomerNameAsync()
+        public System.Threading.Tasks.Task<RemaCustomer.Read_Result> ReadAsync(long ID)
         {
-            RemaCustomer.GetCustomerName inValue = new RemaCustomer.GetCustomerName();
-            return ((RemaCustomer.CustomerCodeUnitRema_Port)(this)).GetCustomerNameAsync(inValue);
+            RemaCustomer.Read inValue = new RemaCustomer.Read();
+            inValue.ID = ID;
+            return ((RemaCustomer.CustomerPageRema_Port)(this)).ReadAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<RemaCustomer.ReadByRecId_Result> RemaCustomer.CustomerPageRema_Port.ReadByRecIdAsync(RemaCustomer.ReadByRecId request)
+        {
+            return base.Channel.ReadByRecIdAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<RemaCustomer.ReadByRecId_Result> ReadByRecIdAsync(string recId)
+        {
+            RemaCustomer.ReadByRecId inValue = new RemaCustomer.ReadByRecId();
+            inValue.recId = recId;
+            return ((RemaCustomer.CustomerPageRema_Port)(this)).ReadByRecIdAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<RemaCustomer.ReadMultiple_Result> RemaCustomer.CustomerPageRema_Port.ReadMultipleAsync(RemaCustomer.ReadMultiple request)
+        {
+            return base.Channel.ReadMultipleAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<RemaCustomer.ReadMultiple_Result> ReadMultipleAsync(RemaCustomer.CustomerPageRema_Filter[] filter, string bookmarkKey, int setSize)
+        {
+            RemaCustomer.ReadMultiple inValue = new RemaCustomer.ReadMultiple();
+            inValue.filter = filter;
+            inValue.bookmarkKey = bookmarkKey;
+            inValue.setSize = setSize;
+            return ((RemaCustomer.CustomerPageRema_Port)(this)).ReadMultipleAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<RemaCustomer.IsUpdated_Result> RemaCustomer.CustomerPageRema_Port.IsUpdatedAsync(RemaCustomer.IsUpdated request)
+        {
+            return base.Channel.IsUpdatedAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<RemaCustomer.IsUpdated_Result> IsUpdatedAsync(string Key)
+        {
+            RemaCustomer.IsUpdated inValue = new RemaCustomer.IsUpdated();
+            inValue.Key = Key;
+            return ((RemaCustomer.CustomerPageRema_Port)(this)).IsUpdatedAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<RemaCustomer.GetRecIdFromKey_Result> RemaCustomer.CustomerPageRema_Port.GetRecIdFromKeyAsync(RemaCustomer.GetRecIdFromKey request)
+        {
+            return base.Channel.GetRecIdFromKeyAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<RemaCustomer.GetRecIdFromKey_Result> GetRecIdFromKeyAsync(string Key)
+        {
+            RemaCustomer.GetRecIdFromKey inValue = new RemaCustomer.GetRecIdFromKey();
+            inValue.Key = Key;
+            return ((RemaCustomer.CustomerPageRema_Port)(this)).GetRecIdFromKeyAsync(inValue);
+        }
+        
+        public System.Threading.Tasks.Task<RemaCustomer.Create_Result> CreateAsync(RemaCustomer.Create request)
+        {
+            return base.Channel.CreateAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<RemaCustomer.CreateMultiple_Result> CreateMultipleAsync(RemaCustomer.CreateMultiple request)
+        {
+            return base.Channel.CreateMultipleAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<RemaCustomer.Update_Result> UpdateAsync(RemaCustomer.Update request)
+        {
+            return base.Channel.UpdateAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<RemaCustomer.UpdateMultiple_Result> UpdateMultipleAsync(RemaCustomer.UpdateMultiple request)
+        {
+            return base.Channel.UpdateMultipleAsync(request);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<RemaCustomer.Delete_Result> RemaCustomer.CustomerPageRema_Port.DeleteAsync(RemaCustomer.Delete request)
+        {
+            return base.Channel.DeleteAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<RemaCustomer.Delete_Result> DeleteAsync(string Key)
+        {
+            RemaCustomer.Delete inValue = new RemaCustomer.Delete();
+            inValue.Key = Key;
+            return ((RemaCustomer.CustomerPageRema_Port)(this)).DeleteAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
@@ -126,7 +811,7 @@ namespace RemaCustomer
         
         private static System.ServiceModel.Channels.Binding GetBindingForEndpoint(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.CustomerCodeUnitRema_Port))
+            if ((endpointConfiguration == EndpointConfiguration.CustomerPageRema_Port))
             {
                 System.ServiceModel.BasicHttpBinding result = new System.ServiceModel.BasicHttpBinding();
                 result.MaxBufferSize = int.MaxValue;
@@ -140,28 +825,27 @@ namespace RemaCustomer
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.CustomerCodeUnitRema_Port))
+            if ((endpointConfiguration == EndpointConfiguration.CustomerPageRema_Port))
             {
-                return new System.ServiceModel.EndpointAddress("http://mathias:7047/BC140/WS/CRONUS International Ltd./Codeunit/CustomerCodeUnitR" +
-                        "ema");
+                return new System.ServiceModel.EndpointAddress("http://mathias:7047/BC140/WS/CRONUS International Ltd./Page/CustomerPageRema");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
         
         private static System.ServiceModel.Channels.Binding GetDefaultBinding()
         {
-            return CustomerCodeUnitRema_PortClient.GetBindingForEndpoint(EndpointConfiguration.CustomerCodeUnitRema_Port);
+            return CustomerPageRema_PortClient.GetBindingForEndpoint(EndpointConfiguration.CustomerPageRema_Port);
         }
         
         private static System.ServiceModel.EndpointAddress GetDefaultEndpointAddress()
         {
-            return CustomerCodeUnitRema_PortClient.GetEndpointAddress(EndpointConfiguration.CustomerCodeUnitRema_Port);
+            return CustomerPageRema_PortClient.GetEndpointAddress(EndpointConfiguration.CustomerPageRema_Port);
         }
         
         public enum EndpointConfiguration
         {
             
-            CustomerCodeUnitRema_Port,
+            CustomerPageRema_Port,
         }
     }
 }
