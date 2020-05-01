@@ -80,9 +80,17 @@ namespace XaBarcodeScannerProject.ViewModels
 			Console.WriteLine(itemAmount);
 		});
 
-		public Command DeleteItem => new Command(async () =>
+		
+
+		public Command<ProductsModel> DelteItem 
 		{
-			//TODO
-		});
+			get 
+			{
+				return new Command<ProductsModel>((product) =>
+				{
+					Products.Remove(product);
+				});
+			}
+		}
 	}
 }
