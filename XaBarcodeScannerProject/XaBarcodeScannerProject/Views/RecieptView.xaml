@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             x:Name="RecieptPage"
              x:Class="XaBarcodeScannerProject.Views.RecieptView">
 
     <Grid>
@@ -45,11 +46,11 @@
                                     Text="+"
                                     FontSize="Medium"
                                     BackgroundColor="Gainsboro" 
-                                    Command="{Binding IncreaseAmountCMD}"
+                                    Command="{Binding Source={x:Reference RecieptPage},Path=BindingContext.IncreaseAmountCMD}"
                                     />
                             <Label  
                                     Grid.Column="6" 
-                                    Text="{Binding ItemAmount}" 
+                                    Text="{Binding Source={x:Reference RecieptPage},Path=BindingContext.ItemAmount}" 
                                     HorizontalOptions="EndAndExpand"
                                     />
                             <Button  
@@ -57,14 +58,14 @@
                                     Text="-" 
                                     FontSize="Medium" 
                                     BackgroundColor="Gainsboro"
-                                    Command="{Binding IncreaseAmountCMD}"
+                                    Command="{Binding Source={x:Reference RecieptPage},Path=BindingContext.DecreaseAmountCMD}"
                                     />
                             <Button 
                                     Grid.Column="8" 
                                     FontSize="Medium" 
                                     BackgroundColor="Red" 
                                     Text="x"  
-                                    Command="{Binding DeleteItemCommand}"
+                                    
                                     />
                         </Grid>
                     </ViewCell>

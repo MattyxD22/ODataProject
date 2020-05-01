@@ -13,8 +13,7 @@ namespace XaBarcodeScannerProject.ViewModels
 
 		public RecieptViewModel()
 		{
-			ItemName = "Harboe Cola";
-			ItemPrice = 14.95;
+			
 			ItemAmount = 1;
 
 			Console.WriteLine(ItemName + " DETTE ER ITEM NAME");
@@ -81,5 +80,9 @@ namespace XaBarcodeScannerProject.ViewModels
 			Console.WriteLine(itemAmount);
 		});
 
+		public Command DeleteItem => new Command(async () =>
+		{
+			//TODO
+		});
 	}
 }
