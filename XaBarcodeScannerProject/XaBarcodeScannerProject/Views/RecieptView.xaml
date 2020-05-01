@@ -19,18 +19,52 @@
                 ItemsSource="{Binding Products}"
                 VerticalOptions="Center" 
                 HorizontalOptions="CenterAndExpand"
-                
+             
                 Grid.Row="1">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Vertical">
-                                <Label Text="{Binding ItemName}"/>
-                                <Label Text="{Binding ItemAmount}"/>
-                                <Label Text="{Binding ItemPrice}"/>
-                                <Button Text="+" HorizontalOptions="EndAndExpand" Command="{Binding IncreaseAmountCMD}"/>
-                                <Button Text="-" Command="{Binding IncreaseAmountCMD}"/>
-                            </StackLayout>
+                        <ViewCell 
+                            Height="40">
+                            <Grid>
+                                <Label 
+                                    Grid.ColumnSpan="3" 
+                                    BackgroundColor="LightCoral" 
+                                    Text="{Binding ItemName}"
+                                    />
+
+                                <Label 
+                                    Grid.Column="3" 
+                                    Grid.ColumnSpan="2"
+                                    Text="{Binding ItemPrice}" 
+                                    BackgroundColor="LightBlue"
+                                    />
+                                <Button 
+                                    Grid.Column="5"
+                                    Text="+"
+                                    FontSize="Medium"
+                                    BackgroundColor="Gainsboro" 
+                                    Command="{Binding IncreaseAmountCMD}"
+                                    />
+                                <Label  
+                                    Grid.Column="6" 
+                                    Text="{Binding ItemAmount}" 
+                                    HorizontalOptions="EndAndExpand"
+                                    />
+                                <Button  
+                                    Grid.Column="7" 
+                                    Text="-" 
+                                    FontSize="Medium" 
+                                    BackgroundColor="Gainsboro"
+                                    Command="{Binding IncreaseAmountCMD}"
+                                    />
+                                <Button 
+                                    Grid.Column="8" 
+                                    FontSize="Medium" 
+                                    BackgroundColor="Red" 
+                                    Text="x"  
+                                    Command="{Binding DeleteItemCommand}"
+                                    />
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
