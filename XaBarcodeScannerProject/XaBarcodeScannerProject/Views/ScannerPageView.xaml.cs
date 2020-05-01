@@ -30,7 +30,7 @@ namespace XaBarcodeScannerProject.Views
                    ((ScannerPageViewModel)this.BindingContext).OnScanClicked(result); // sender result til viewmodel så man kan "arbejde" videre med barcoden
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-
+                        // lukker scanneren når den har fået et resultat. 
                         await Navigation.PopAsync();
                         
                         

@@ -6,30 +6,39 @@
              mc:Ignorable="d"
              x:Class="XaBarcodeScannerProject.Views.LoginView">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Login"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-
-            <Grid HeightRequest="200">
-                
-                <Entry 
-                Placeholder="Email"
-                HorizontalOptions="Center"
-                VerticalOptions="CenterAndExpand"/>
-
-                <Entry 
-                Placeholder="Password"
-                HorizontalOptions="Center"
-                VerticalOptions="CenterAndExpand"/>
-
-                <Button 
+        <AbsoluteLayout>
+            <Label 
                 Text="Login"
-                HorizontalOptions="Center"
-                VerticalOptions="CenterAndExpand"/>
+                AbsoluteLayout.LayoutBounds="175,50"
+                />
 
-            </Grid>
-            
-        </StackLayout>
+            <Entry
+               x:Name="EmailEntry"
+               Placeholder="Email"
+               Text="{Binding UserEmail}"
+               AbsoluteLayout.LayoutBounds="165,100"
+                />
+
+            <Entry 
+                x:Name="PasswordEntry"
+                Placeholder="Password"
+                Text="{Binding UserPassword}"
+                AbsoluteLayout.LayoutBounds="165,150"
+                />
+
+            <Button
+                Text="Login"
+                AbsoluteLayout.LayoutBounds="75,200"
+                Command="{Binding GetTextCMD}"
+                />
+
+
+            <Button 
+                Text="Sign up"
+                AbsoluteLayout.LayoutBounds="225,200"
+                Command="{Binding CreateNewUserCMD}"
+                />
+
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
