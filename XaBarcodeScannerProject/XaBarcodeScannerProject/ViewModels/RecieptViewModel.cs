@@ -17,6 +17,8 @@ namespace XaBarcodeScannerProject.ViewModels
 			ItemPrice = 14.95;
 			ItemAmount = 1;
 
+			Console.WriteLine(ItemName + " DETTE ER ITEM NAME");
+
 			Products = new ObservableCollection<ProductsModel>()
 
 			{

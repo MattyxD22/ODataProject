@@ -5,79 +5,81 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="XaBarcodeScannerProject.Views.RecieptView">
-    <ContentPage.Content>
-        <Grid>
 
-            <Label Grid.Row="0"
-                Text="{Binding ItemName }"
+    <Grid>
+       
+        <Label Grid.Row="0" 
+                Text="Reciept"
                 VerticalOptions="StartAndExpand"
                 HorizontalOptions="CenterAndExpand"
                 />
 
-            <ListView 
+        <ListView 
                 x:Name="ListViewReceipt"
                 ItemsSource="{Binding Products}"
                 VerticalOptions="Center" 
                 HorizontalOptions="CenterAndExpand"
              
                 Grid.Row="1">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell 
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell 
                             Height="40">
-                            <Grid>
-                                <Label 
+                        <Grid>
+                          
+
+                            <Label 
                                     Grid.ColumnSpan="3" 
                                     BackgroundColor="LightCoral" 
-                                    Text="{Binding ItemName}"
+                                    Text="{Binding Name}"
                                     />
 
-                                <Label 
+                            <Label 
                                     Grid.Column="3" 
                                     Grid.ColumnSpan="2"
-                                    Text="{Binding ItemPrice}" 
+                                    Text="{Binding Price}" 
                                     BackgroundColor="LightBlue"
                                     />
-                                <Button 
+                            <Button 
                                     Grid.Column="5"
                                     Text="+"
                                     FontSize="Medium"
                                     BackgroundColor="Gainsboro" 
                                     Command="{Binding IncreaseAmountCMD}"
                                     />
-                                <Label  
+                            <Label  
                                     Grid.Column="6" 
                                     Text="{Binding ItemAmount}" 
                                     HorizontalOptions="EndAndExpand"
                                     />
-                                <Button  
+                            <Button  
                                     Grid.Column="7" 
                                     Text="-" 
                                     FontSize="Medium" 
                                     BackgroundColor="Gainsboro"
                                     Command="{Binding IncreaseAmountCMD}"
                                     />
-                                <Button 
+                            <Button 
                                     Grid.Column="8" 
                                     FontSize="Medium" 
                                     BackgroundColor="Red" 
                                     Text="x"  
                                     Command="{Binding DeleteItemCommand}"
                                     />
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
-            <Label 
+        <Label 
                 Grid.Row="2"
                 Text="Total Price"
                 VerticalOptions="EndAndExpand"
                 />
-            
-            
-            
-        </Grid>
-    </ContentPage.Content>
+
+
+
+    </Grid>
+
 </ContentPage>

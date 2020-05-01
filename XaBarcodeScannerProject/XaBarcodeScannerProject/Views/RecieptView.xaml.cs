@@ -15,7 +15,8 @@ namespace XaBarcodeScannerProject.Views
         public RecieptView()
         {
             InitializeComponent();
-            BindingContext = new RecieptViewModel();
+            var viewmodel = new RecieptViewModel();
+            BindingContext = viewmodel;
         }
 
     }
