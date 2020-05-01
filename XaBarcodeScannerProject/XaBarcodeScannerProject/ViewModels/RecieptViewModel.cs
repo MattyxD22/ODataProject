@@ -13,11 +13,10 @@ namespace XaBarcodeScannerProject.ViewModels
 
 		public RecieptViewModel()
 		{
-			ItemName = "Harboe Cola";
-			ItemPrice = 14.95;
+			
 			ItemAmount = 1;
 
-			Console.WriteLine(ItemName + " DETTE ER ITEM NAME");
+			
 
 			Products = new ObservableCollection<ProductsModel>()
 
@@ -81,5 +80,17 @@ namespace XaBarcodeScannerProject.ViewModels
 			Console.WriteLine(itemAmount);
 		});
 
+		
+
+		public Command<ProductsModel> DelteItem 
+		{
+			get 
+			{
+				return new Command<ProductsModel>((product) =>
+				{
+					Products.Remove(product);
+				});
+			}
+		}
 	}
 }

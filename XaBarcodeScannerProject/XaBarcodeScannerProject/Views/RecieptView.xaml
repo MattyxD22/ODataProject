@@ -3,9 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:XaBarcodeScannerProject.ViewModels"
              mc:Ignorable="d"
+             x:Name="RecieptPage"
              x:Class="XaBarcodeScannerProject.Views.RecieptView">
 
+    <ContentPage.BindingContext>
+        <viewModels:RecieptViewModel/>
+    </ContentPage.BindingContext>
     <Grid>
        
         <Label Grid.Row="0" 
@@ -19,6 +24,7 @@
                 ItemsSource="{Binding Products}"
                 VerticalOptions="Center" 
                 HorizontalOptions="CenterAndExpand"
+                HasUnevenRows="True"
              
                 Grid.Row="1">
             <ListView.ItemTemplate>
@@ -45,11 +51,11 @@
                                     Text="+"
                                     FontSize="Medium"
                                     BackgroundColor="Gainsboro" 
-                                    Command="{Binding IncreaseAmountCMD}"
+                                    Command="{Binding Source={x:Reference RecieptPage},Path=BindingContext.IncreaseAmountCMD}"
                                     />
                             <Label  
                                     Grid.Column="6" 
-                                    Text="{Binding ItemAmount}" 
+                                    Text="{Binding Source={x:Reference RecieptPage},Path=BindingContext.ItemAmount}" 
                                     HorizontalOptions="EndAndExpand"
                                     />
                             <Button  
@@ -57,14 +63,15 @@
                                     Text="-" 
                                     FontSize="Medium" 
                                     BackgroundColor="Gainsboro"
-                                    Command="{Binding IncreaseAmountCMD}"
+                                    Command="{Binding Source={x:Reference RecieptPage},Path=BindingContext.DecreaseAmountCMD}"
                                     />
                             <Button 
                                     Grid.Column="8" 
                                     FontSize="Medium" 
                                     BackgroundColor="Red" 
                                     Text="x"  
-                                    Command="{Binding DeleteItemCommand}"
+                                    Clicked="RemoveItem"
+                                    
                                     />
                         </Grid>
                     </ViewCell>
@@ -81,5 +88,6 @@
 
 
     </Grid>
+    
 
 </ContentPage>
