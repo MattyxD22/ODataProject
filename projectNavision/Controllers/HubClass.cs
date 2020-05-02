@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Letters;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using projectNavision.Models;
 using RemaCustomer;
@@ -13,8 +14,11 @@ namespace projectNavision.Controllers
     {
         public async Task<string> testMethod(string inputstring)
         {
-            CustomerPageRema_Port test = null;
-            RemaCustomer.
+            CustomerPageRema client = new CustomerPageRema();
+            GetCustomerName test = new GetCustomerName();
+
+            return "";
+            
 
         }
 
@@ -30,8 +34,8 @@ namespace projectNavision.Controllers
         //    var result = await test.GetStudentAsync();
         //    Student studentBuilder = new Student();
 
-            
-           
+
+
 
         //    return result.ToString();
         //}
@@ -43,7 +47,7 @@ namespace projectNavision.Controllers
         //    _logger = logger;
         //}
 
-      
+
 
 
     }
