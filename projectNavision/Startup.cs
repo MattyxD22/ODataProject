@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OData.Edm;
+using projectNavision.Controllers;
 using projectNavision.Models;
 
 namespace projectNavision
@@ -29,9 +30,15 @@ namespace projectNavision
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers(MvcOptions =>
-                MvcOptions.EnableEndpointRouting = false);
+            services.AddSignalR();
             services.AddControllers();
+            services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
+            {
+                builder.AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .WithOrigins("https://projectnavision20200502131207.azurewebsites.net");
+
+            }));
             services.AddOData();
         }
 
@@ -52,16 +59,10 @@ namespace projectNavision
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<HubClass>("/HubClass");
             });
         }
 
-        IEdmModel GetEdmModel()
-        {
-            var odataBuilder = new ODataConventionModelBuilder();
-            odataBuilder.EntitySet<Student>("Students");
-
-            return odataBuilder.GetEdmModel();
-        }
 
         
 

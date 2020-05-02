@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebsiteNavision.Properties {
+namespace NavisionWebsite.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -26,10 +26,11 @@ namespace WebsiteNavision.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://mathias:7047/BC140/WS/CRONUS%20International%20Ltd./Page/CustomerPageRema")]
-        public string WebsiteNavision_RemaCustomer_CustomerPageRema_Service {
+        [global::System.Configuration.DefaultSettingValueAttribute("http://mathias:7047/BC140/WS/CRONUS%20International%20Ltd./Codeunit/CustomerCodeU" +
+            "nit")]
+        public string NavisionWebsite_CustomerCodeUnit_CustomerCodeUnit {
             get {
-                return ((string)(this["WebsiteNavision_RemaCustomer_CustomerPageRema_Service"]));
+                return ((string)(this["NavisionWebsite_CustomerCodeUnit_CustomerCodeUnit"]));
             }
         }
     }

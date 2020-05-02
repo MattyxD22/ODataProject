@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace NavisionWebSite.Areas.HelpPage.ModelDescriptions
+namespace NavisionWebsite.Areas.HelpPage.ModelDescriptions
 {
     public interface IModelDocumentationProvider
     {

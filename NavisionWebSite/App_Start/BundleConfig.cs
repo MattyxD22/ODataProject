@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace NavisionWebSite
+namespace NavisionWebsite
 {
     public class BundleConfig
     {

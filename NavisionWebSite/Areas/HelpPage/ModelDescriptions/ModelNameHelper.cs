@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace NavisionWebSite.Areas.HelpPage.ModelDescriptions
+namespace NavisionWebsite.Areas.HelpPage.ModelDescriptions
 {
     internal static class ModelNameHelper
     {

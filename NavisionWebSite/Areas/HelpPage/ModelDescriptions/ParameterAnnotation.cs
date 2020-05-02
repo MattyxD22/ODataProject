@@ -1,6 +1,6 @@
 using System;
 
-namespace NavisionWebSite.Areas.HelpPage.ModelDescriptions
+namespace NavisionWebsite.Areas.HelpPage.ModelDescriptions
 {
     public class ParameterAnnotation
     {

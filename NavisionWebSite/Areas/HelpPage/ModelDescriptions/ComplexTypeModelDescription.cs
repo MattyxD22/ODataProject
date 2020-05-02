@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace NavisionWebSite.Areas.HelpPage.ModelDescriptions
+namespace NavisionWebsite.Areas.HelpPage.ModelDescriptions
 {
     public class ComplexTypeModelDescription : ModelDescription
     {

@@ -1,7 +1,7 @@
 using System.Web.Http;
 using System.Web.Mvc;
 
-namespace NavisionWebSite.Areas.HelpPage
+namespace NavisionWebsite.Areas.HelpPage
 {
     public class HelpPageAreaRegistration : AreaRegistration
     {

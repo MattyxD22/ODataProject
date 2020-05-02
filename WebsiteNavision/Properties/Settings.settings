@@ -1,9 +1,0 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WebsiteNavision.Properties" GeneratedClassName="Settings">
-  <Profiles />
-  <Settings>
-    <Setting Name="WebsiteNavision_RemaCustomer_CustomerPageRema_Service" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://mathias:7047/BC140/WS/CRONUS%20International%20Ltd./Page/CustomerPageRema</Value>
-    </Setting>
-  </Settings>
-</SettingsFile>

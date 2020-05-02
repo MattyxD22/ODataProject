@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace NavisionWebSite.Controllers
+namespace NavisionWebsite.Controllers
 {
     public class ValuesController : ApiController
     {
@@ -18,7 +18,9 @@ namespace NavisionWebSite.Controllers
         // GET api/values/5
         public string Get(int id)
         {
-            return "value";
+            CustomerCodeUnit.CustomerCodeUnit customer = new CustomerCodeUnit.CustomerCodeUnit();
+            var result = customer.GetCustomerName();
+            return Ok(result);
         }
 
         // POST api/values

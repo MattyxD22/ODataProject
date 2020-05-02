@@ -11,10 +11,10 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using NavisionWebSite.Areas.HelpPage.ModelDescriptions;
-using NavisionWebSite.Areas.HelpPage.Models;
+using NavisionWebsite.Areas.HelpPage.ModelDescriptions;
+using NavisionWebsite.Areas.HelpPage.Models;
 
-namespace NavisionWebSite.Areas.HelpPage
+namespace NavisionWebsite.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

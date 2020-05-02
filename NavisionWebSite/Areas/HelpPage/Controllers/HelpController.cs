@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using NavisionWebSite.Areas.HelpPage.ModelDescriptions;
-using NavisionWebSite.Areas.HelpPage.Models;
+using NavisionWebsite.Areas.HelpPage.ModelDescriptions;
+using NavisionWebsite.Areas.HelpPage.Models;
 
-namespace NavisionWebSite.Areas.HelpPage.Controllers
+namespace NavisionWebsite.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

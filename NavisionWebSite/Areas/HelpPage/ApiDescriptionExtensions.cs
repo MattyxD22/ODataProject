@@ -3,7 +3,7 @@ using System.Text;
 using System.Web;
 using System.Web.Http.Description;
 
-namespace NavisionWebSite.Areas.HelpPage
+namespace NavisionWebsite.Areas.HelpPage
 {
     public static class ApiDescriptionExtensions
     {

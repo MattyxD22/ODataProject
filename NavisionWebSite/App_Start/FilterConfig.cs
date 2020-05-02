@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace NavisionWebSite
+namespace NavisionWebsite
 {
     public class FilterConfig
     {

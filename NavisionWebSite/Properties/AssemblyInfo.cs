@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("NavisionWebSite")]
+[assembly: AssemblyTitle("NavisionWebsite")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("NavisionWebSite")]
+[assembly: AssemblyProduct("NavisionWebsite")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("a2e458f8-946d-46eb-87d9-567a97f73daf")]
+[assembly: Guid("30a075d8-f69a-4c33-83e6-31fab46af8ac")]
 
 // Version information for an assembly consists of the following four values:
 //
