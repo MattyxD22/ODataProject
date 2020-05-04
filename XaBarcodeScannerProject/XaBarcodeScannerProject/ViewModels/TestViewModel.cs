@@ -16,29 +16,27 @@ namespace XaBarcodeScannerProject.ViewModels
 
         public TestViewModel()
         {
-            //Messages = new ObservableCollection<string>();
 
-            Console.WriteLine("virker det???");
 
             hubConnection = new HubConnectionBuilder()
-            .WithUrl("https://projectnavision20200502131207.azurewebsites.net/HubClass")
+            .WithUrl("https://projectnavision20200502131207.azurewebsites.net/ChatHub")
             .Build();
 
             Connect();
-            TestMethod("Mathias");
 
-            hubConnection.On<string>("SendMessage", (inputString) =>
+            hubConnection.On<string>("CodeUnit", (inputString) =>
             {
+
                 Console.WriteLine("Message has been sent: " + inputString);
                 Result = Messages;
 
                 //Messages.Add(new Message() { Username = user, Text = $"{user} has joined the chat", IsSystemMessage = true, Date = DateTime.Now });
             });
 
-            hubConnection.On<string>("JoinChat", (user) =>
+            hubConnection.On<string>("JoinChat", (ID) =>
             {
-                Console.WriteLine("joined");
-                TestMethod("Mathias");
+                Console.WriteLine("joined: " + ID);
+                
             });
         }
 
@@ -58,11 +56,23 @@ namespace XaBarcodeScannerProject.ViewModels
             set { result = value; OnPropertyChanged(); }
         }
 
+        private int inputID;
+
+        public int InputID
+        {
+            get { return inputID; }
+            set { inputID = value; OnPropertyChanged(); }
+        }
+
+
+
         public Command SendMessageCommand => new Command(async () =>
         {
-            await TestMethod(Messages);
-            Console.WriteLine(Messages);
-            Console.WriteLine(Result);
+           
+            InputID = Int32.Parse(Messages);
+            Console.WriteLine(InputID);
+            await hubConnection.InvokeAsync("JoinChat", InputID);
+            await TestMethod(InputID);
 
         });
 
@@ -72,19 +82,20 @@ namespace XaBarcodeScannerProject.ViewModels
             {
                 Console.WriteLine("Is connected");
                 await hubConnection.StartAsync();
-                await hubConnection.InvokeAsync("JoinChat", "mig");
+                await hubConnection.InvokeAsync("JoinChat", 1);
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Error: " + e.Message);
             }
 
         }
 
-        async Task TestMethod(string inputString)
+        async Task TestMethod(int ID)
         {
-            
-            await hubConnection.InvokeAsync("CodeUnit", inputString);
+            await hubConnection.InvokeAsync("CodeUnit", ID);
+            //await hubConnection.InvokeAsync("CodeUnit", ID);
+           
         }
     }
 }

@@ -59,7 +59,7 @@ namespace projectNavision
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHub<HubClass>("/HubClass");
+                endpoints.MapHub<ChatHub>("/ChatHub");
             });
         }
 

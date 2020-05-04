@@ -30,10 +30,16 @@ namespace RemaCodeUnit
     public partial class GetCustomerName
     {
         
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit", Order=0)]
+        public string customerID;
+        
         public GetCustomerName()
         {
-            //Debug
-            System.Console.WriteLine("GetCustomerName has been called!");
+        }
+        
+        public GetCustomerName(string customerID)
+        {
+            this.customerID = customerID;
         }
     }
     
@@ -153,9 +159,10 @@ namespace RemaCodeUnit
             return base.Channel.GetCustomerNameAsync(request);
         }
         
-        public System.Threading.Tasks.Task<RemaCodeUnit.GetCustomerName_Result> GetCustomerNameAsync()
+        public System.Threading.Tasks.Task<RemaCodeUnit.GetCustomerName_Result> GetCustomerNameAsync(string customerID)
         {
             RemaCodeUnit.GetCustomerName inValue = new RemaCodeUnit.GetCustomerName();
+            inValue.customerID = customerID;
             return ((RemaCodeUnit.RemaCustomerCodeUnit_Port)(this)).GetCustomerNameAsync(inValue);
         }
         
