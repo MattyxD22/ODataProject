@@ -10,23 +10,28 @@ using Microsoft.Owin.Cors;
 
 namespace NavisionBackend
 {
-
+    using Microsoft.AspNet.SignalR.Client;
     using RemaCodeUnit;
 
     class Program
     {
         static void Main(string[] args)
         {
+            var myHub = new MyHub();
             // This will *ONLY* bind to localhost, if you want to bind to all addresses
             // use http://*:8080 to bind to all addresses. 
             // See http://msdn.microsoft.com/library/system.net.httplistener.aspx 
             // for more information.
-            string url = "http://localhost:8000";
+            string url = "http://localhost:44379";
             using (WebApp.Start(url))
             {
                 Console.WriteLine("Server running on {0}", url);
+                Console.WriteLine(myHub.CodeUnit("1"));
+
+                
                 Console.ReadLine();
             }
+
         }
     }
 
@@ -36,6 +41,14 @@ namespace NavisionBackend
         {
             app.UseCors(CorsOptions.AllowAll);
             app.MapSignalR();
+            
+
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapHub<ChatHub>("/chathub");
+            });
+
         }
     }
     public class MyHub : Hub

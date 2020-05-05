@@ -37,7 +37,7 @@ namespace projectNavision
             {
                 builder.AllowAnyMethod()
                     .AllowAnyHeader()
-                    .WithOrigins("https://localhost:44379");
+                    .WithOrigins("https://localhost:44379/");
 
             }));
         }

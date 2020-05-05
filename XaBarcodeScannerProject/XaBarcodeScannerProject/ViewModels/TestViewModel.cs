@@ -12,17 +12,36 @@ namespace XaBarcodeScannerProject.ViewModels
     public class TestViewModel : BaseViewModel
     {
 
+        //IHubProxy _hub;
         HubConnection hubConnection;
 
         public TestViewModel()
         {
             SendMessageCommand = new Command(async () => { await TestMethod(InputID); });
 
+
+            //string url = @"http://localhost:8000/chatHub";
+            //var hubConnection = new HubConnection(url);
+            //_hub = hubConnection.CreateHubProxy("Hub");
+            //hubConnection.Start().Wait();
+
+
+
             hubConnection = new HubConnectionBuilder()
             .WithUrl("https://localhost:44379/chatHub")
             .Build();
 
-            //Connect();
+            Connect();
+
+            //// localhost for UWP/iOS or special IP for Android
+            //var ip = "localhost";
+            //if (Device.RuntimePlatform == Device.Android)
+            //    ip = "10.0.2.2";
+
+            //hubConnection = new HubConnectionBuilder()
+            //    .WithUrl($"http://{ip}:44379/chatHub")
+            //    .Build();
+
 
             hubConnection.On<string>("CodeUnit", (customerID) =>
             {
@@ -103,10 +122,10 @@ namespace XaBarcodeScannerProject.ViewModels
 
         //public Command SendMessageCommand => new Command(async () =>
         //{
-           
+
         //    //InputID = Int32.Parse(Messages);
         //    Console.WriteLine(InputID);
-            
+
         //    await hubConnection.InvokeAsync("JoinChat", InputID);
         //    await TestMethod(InputID);
         //    await hubConnection.StopAsync();
@@ -122,7 +141,7 @@ namespace XaBarcodeScannerProject.ViewModels
                 Console.WriteLine("Is connected");
                 await hubConnection.StartAsync();
                 await hubConnection.InvokeAsync("Echo", user, message);
-                
+
                 //
             }
             catch (Exception e)
@@ -136,6 +155,7 @@ namespace XaBarcodeScannerProject.ViewModels
         {
             string message = "Message";
             string user = "mig";
+            await Connect();
             try
             {
 
@@ -144,15 +164,15 @@ namespace XaBarcodeScannerProject.ViewModels
                 //{
                 //    Console.WriteLine(item.Message);
                 //}
-                await Connect();
+                //await Connect();
                 await hubConnection.InvokeAsync("CodeUnit", ID);
-                //foreach (var item in _Messages)
-                //{
-                //    Console.WriteLine(item.Message);
-                //    Console.WriteLine(item.User);
-                //}
+                foreach (var item in _Messages)
+                {
+                    Console.WriteLine(item.Message);
+                    Console.WriteLine(item.User);
+                }
 
-                await hubConnection.InvokeAsync("SendMessage", "Test", "Test");
+                //await hubConnection.InvokeAsync("SendMessage", "Test", "Test");
 
                 //await hubConnection.InvokeAsync("SendMessage", ID);
                 //foreach (var item in _Messages)

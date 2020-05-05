@@ -21,6 +21,12 @@ namespace RemaCodeUnit
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit:Capitalize", ReplyAction="*")]
         System.Threading.Tasks.Task<RemaCodeUnit.Capitalize_Result> CapitalizeAsync(RemaCodeUnit.Capitalize request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit:CustomerLogin", ReplyAction="*")]
+        System.Threading.Tasks.Task<RemaCodeUnit.CustomerLogin_Result> CustomerLoginAsync(RemaCodeUnit.CustomerLogin request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit:CreateCustomer", ReplyAction="*")]
+        System.Threading.Tasks.Task<RemaCodeUnit.CreateCustomer_Result> CreateCustomerAsync(RemaCodeUnit.CreateCustomer request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -103,6 +109,102 @@ namespace RemaCodeUnit
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CustomerLogin", WrapperNamespace="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit", IsWrapped=true)]
+    public partial class CustomerLogin
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit", Order=0)]
+        public string email;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit", Order=1)]
+        public string password;
+        
+        public CustomerLogin()
+        {
+        }
+        
+        public CustomerLogin(string email, string password)
+        {
+            this.email = email;
+            this.password = password;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CustomerLogin_Result", WrapperNamespace="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit", IsWrapped=true)]
+    public partial class CustomerLogin_Result
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit", Order=0)]
+        public string return_value;
+        
+        public CustomerLogin_Result()
+        {
+        }
+        
+        public CustomerLogin_Result(string return_value)
+        {
+            this.return_value = return_value;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CreateCustomer", WrapperNamespace="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit", IsWrapped=true)]
+    public partial class CreateCustomer
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit", Order=0)]
+        public string firstName;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit", Order=1)]
+        public string lastName;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit", Order=2)]
+        public string email;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit", Order=3)]
+        public string password;
+        
+        public CreateCustomer()
+        {
+        }
+        
+        public CreateCustomer(string firstName, string lastName, string email, string password)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.email = email;
+            this.password = password;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CreateCustomer_Result", WrapperNamespace="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit", IsWrapped=true)]
+    public partial class CreateCustomer_Result
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit", Order=0)]
+        public string return_value;
+        
+        public CreateCustomer_Result()
+        {
+        }
+        
+        public CreateCustomer_Result(string return_value)
+        {
+            this.return_value = return_value;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
     public interface RemaCustomerCodeUnit_PortChannel : RemaCodeUnit.RemaCustomerCodeUnit_Port, System.ServiceModel.IClientChannel
     {
@@ -177,6 +279,36 @@ namespace RemaCodeUnit
             RemaCodeUnit.Capitalize inValue = new RemaCodeUnit.Capitalize();
             inValue.input = input;
             return ((RemaCodeUnit.RemaCustomerCodeUnit_Port)(this)).CapitalizeAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<RemaCodeUnit.CustomerLogin_Result> RemaCodeUnit.RemaCustomerCodeUnit_Port.CustomerLoginAsync(RemaCodeUnit.CustomerLogin request)
+        {
+            return base.Channel.CustomerLoginAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<RemaCodeUnit.CustomerLogin_Result> CustomerLoginAsync(string email, string password)
+        {
+            RemaCodeUnit.CustomerLogin inValue = new RemaCodeUnit.CustomerLogin();
+            inValue.email = email;
+            inValue.password = password;
+            return ((RemaCodeUnit.RemaCustomerCodeUnit_Port)(this)).CustomerLoginAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<RemaCodeUnit.CreateCustomer_Result> RemaCodeUnit.RemaCustomerCodeUnit_Port.CreateCustomerAsync(RemaCodeUnit.CreateCustomer request)
+        {
+            return base.Channel.CreateCustomerAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<RemaCodeUnit.CreateCustomer_Result> CreateCustomerAsync(string firstName, string lastName, string email, string password)
+        {
+            RemaCodeUnit.CreateCustomer inValue = new RemaCodeUnit.CreateCustomer();
+            inValue.firstName = firstName;
+            inValue.lastName = lastName;
+            inValue.email = email;
+            inValue.password = password;
+            return ((RemaCodeUnit.RemaCustomerCodeUnit_Port)(this)).CreateCustomerAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()

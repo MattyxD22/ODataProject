@@ -33,6 +33,8 @@ namespace NavisionBackend.RemaCodeUnit {
         
         private System.Threading.SendOrPostCallback CapitalizeOperationCompleted;
         
+        private System.Threading.SendOrPostCallback CustomerLoginOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -76,6 +78,9 @@ namespace NavisionBackend.RemaCodeUnit {
         
         /// <remarks/>
         public event CapitalizeCompletedEventHandler CapitalizeCompleted;
+        
+        /// <remarks/>
+        public event CustomerLoginCompletedEventHandler CustomerLoginCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit:GetCustomerName", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit", ResponseElementName="GetCustomerName_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -138,6 +143,36 @@ namespace NavisionBackend.RemaCodeUnit {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit:CustomerLogin", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit", ResponseElementName="CustomerLogin_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string CustomerLogin(string email) {
+            object[] results = this.Invoke("CustomerLogin", new object[] {
+                        email});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CustomerLoginAsync(string email) {
+            this.CustomerLoginAsync(email, null);
+        }
+        
+        /// <remarks/>
+        public void CustomerLoginAsync(string email, object userState) {
+            if ((this.CustomerLoginOperationCompleted == null)) {
+                this.CustomerLoginOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCustomerLoginOperationCompleted);
+            }
+            this.InvokeAsync("CustomerLogin", new object[] {
+                        email}, this.CustomerLoginOperationCompleted, userState);
+        }
+        
+        private void OnCustomerLoginOperationCompleted(object arg) {
+            if ((this.CustomerLoginCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CustomerLoginCompleted(this, new CustomerLoginCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -195,6 +230,32 @@ namespace NavisionBackend.RemaCodeUnit {
         private object[] results;
         
         internal CapitalizeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void CustomerLoginCompletedEventHandler(object sender, CustomerLoginCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CustomerLoginCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CustomerLoginCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
