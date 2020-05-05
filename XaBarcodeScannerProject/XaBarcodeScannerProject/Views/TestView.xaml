@@ -12,7 +12,7 @@
                 HorizontalOptions="CenterAndExpand" />
 
             <Entry
-                Text="{Binding Messages}"
+                Text="{Binding InputID}"
                 Placeholder="test text"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"

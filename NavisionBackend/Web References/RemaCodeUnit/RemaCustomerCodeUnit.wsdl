@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="GetCustomerName">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="customerID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCustomerName_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="Capitalize">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="input" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="Capitalize_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="GetCustomerName">
+    <part name="parameters" element="tns:GetCustomerName" />
+  </message>
+  <message name="GetCustomerName_Result">
+    <part name="parameters" element="tns:GetCustomerName_Result" />
+  </message>
+  <message name="Capitalize">
+    <part name="parameters" element="tns:Capitalize" />
+  </message>
+  <message name="Capitalize_Result">
+    <part name="parameters" element="tns:Capitalize_Result" />
+  </message>
+  <portType name="RemaCustomerCodeUnit_Port">
+    <operation name="GetCustomerName">
+      <input name="GetCustomerName" message="tns:GetCustomerName" />
+      <output name="GetCustomerName_Result" message="tns:GetCustomerName_Result" />
+    </operation>
+    <operation name="Capitalize">
+      <input name="Capitalize" message="tns:Capitalize" />
+      <output name="Capitalize_Result" message="tns:Capitalize_Result" />
+    </operation>
+  </portType>
+  <binding name="RemaCustomerCodeUnit_Binding" type="tns:RemaCustomerCodeUnit_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="GetCustomerName">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit:GetCustomerName" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetCustomerName">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetCustomerName_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Capitalize">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/RemaCustomerCodeUnit:Capitalize" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Capitalize">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Capitalize_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="RemaCustomerCodeUnit">
+    <port name="RemaCustomerCodeUnit_Port" binding="tns:RemaCustomerCodeUnit_Binding">
+      <address location="http://mathias:7047/BC140/WS/CRONUS%20International%20Ltd./Codeunit/RemaCustomerCodeUnit" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

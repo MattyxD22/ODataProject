@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
+using XaBarcodeScannerProject.Models;
 using Xamarin.Forms;
 
 namespace XaBarcodeScannerProject.ViewModels
@@ -12,34 +13,57 @@ namespace XaBarcodeScannerProject.ViewModels
     {
 
         HubConnection hubConnection;
-        private ObservableCollection<string> _messages;
 
         public TestViewModel()
         {
-
+            SendMessageCommand = new Command(async () => { await TestMethod(InputID); });
 
             hubConnection = new HubConnectionBuilder()
-            .WithUrl("https://projectnavision20200502131207.azurewebsites.net/ChatHub")
+            .WithUrl("https://localhost:44379/chatHub")
             .Build();
 
-            Connect();
+            //Connect();
 
-            hubConnection.On<string>("CodeUnit", (inputString) =>
+            hubConnection.On<string>("CodeUnit", (customerID) =>
             {
 
-                Console.WriteLine("Message has been sent: " + inputString);
-                Result = Messages;
+                //Console.WriteLine($"Message has been sent: {inputString}");
+                Result = customerID;
+                _Messages.Add(new DebugMessages() { Message = customerID, User = "" });
 
                 //Messages.Add(new Message() { Username = user, Text = $"{user} has joined the chat", IsSystemMessage = true, Date = DateTime.Now });
             });
 
+            hubConnection.On<string, string>("Echo", (user, message) =>
+            {
+                //Console.WriteLine(user + " " + message);
+                
+                _Messages.Add( new DebugMessages() { Message = message, User = user });
+            });
+
+            hubConnection.On<string>("TestIvoke", (message) =>
+                {
+                Console.WriteLine($"Test invoked: {message}");
+            });
+
             hubConnection.On<string>("JoinChat", (ID) =>
             {
-                Console.WriteLine("joined: " + ID);
+                Console.WriteLine($"joined: {ID}");
+                _Messages.Add(new DebugMessages { Message = ID, User = "" });
                 
             });
+
+            hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
+            {
+                Console.WriteLine(message + " " + message);
+                _Messages.Add(new DebugMessages() { Message = message, User = user });
+
+            });
+
         }
 
+
+        #region -- Bindings --
         private string messages;
 
         public string Messages
@@ -56,44 +80,105 @@ namespace XaBarcodeScannerProject.ViewModels
             set { result = value; OnPropertyChanged(); }
         }
 
-        private int inputID;
+        private string inputID;
 
-        public int InputID
+        public string InputID
         {
             get { return inputID; }
             set { inputID = value; OnPropertyChanged(); }
         }
 
+        private ObservableCollection<DebugMessages> _messages;
 
-
-        public Command SendMessageCommand => new Command(async () =>
+        public ObservableCollection<DebugMessages> _Messages
         {
-           
-            InputID = Int32.Parse(Messages);
-            Console.WriteLine(InputID);
-            await hubConnection.InvokeAsync("JoinChat", InputID);
-            await TestMethod(InputID);
+            get { return _messages; }
+            set { _messages = value; OnPropertyChanged(); }
+        }
 
-        });
+
+        #endregion
+
+        public Command SendMessageCommand { get; }
+
+        //public Command SendMessageCommand => new Command(async () =>
+        //{
+           
+        //    //InputID = Int32.Parse(Messages);
+        //    Console.WriteLine(InputID);
+            
+        //    await hubConnection.InvokeAsync("JoinChat", InputID);
+        //    await TestMethod(InputID);
+        //    await hubConnection.StopAsync();
+        //    //await hubConnection.InvokeAsync("BroadcastMessage", "Mathias", "Test");
+        //});
 
         async Task Connect()
         {
+            string message = "Message";
+            string user = "mig";
             try
             {
                 Console.WriteLine("Is connected");
                 await hubConnection.StartAsync();
-                await hubConnection.InvokeAsync("JoinChat", 1);
+                await hubConnection.InvokeAsync("Echo", user, message);
+                
+                //
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: " + e.Message);
+                Console.WriteLine("ConnectMethod Error: " + e.Message);
             }
 
         }
 
-        async Task TestMethod(int ID)
+        async Task TestMethod(string ID)
         {
-            await hubConnection.InvokeAsync("CodeUnit", ID);
+            string message = "Message";
+            string user = "mig";
+            try
+            {
+
+                //await hubConnection.InvokeAsync("Echo", user, message);
+                //foreach (var item in _Messages)
+                //{
+                //    Console.WriteLine(item.Message);
+                //}
+                await Connect();
+                await hubConnection.InvokeAsync("CodeUnit", ID);
+                //foreach (var item in _Messages)
+                //{
+                //    Console.WriteLine(item.Message);
+                //    Console.WriteLine(item.User);
+                //}
+
+                await hubConnection.InvokeAsync("SendMessage", "Test", "Test");
+
+                //await hubConnection.InvokeAsync("SendMessage", ID);
+                //foreach (var item in _Messages)
+                //{
+                //    Console.WriteLine(item.User);
+                //    Console.WriteLine(item.Message);
+                //}
+
+                //await hubConnection.InvokeAsync("JoinChat", ID);
+
+                //foreach (var item in _Messages)
+                //{
+                //    Console.WriteLine(item.Message);
+                //    Console.WriteLine(item.User);
+                //}
+
+
+
+            }
+            catch (Exception e)
+            {
+                
+                Console.WriteLine("TestMethod Error: " +  e.Message);
+            }
+            
+            
             //await hubConnection.InvokeAsync("CodeUnit", ID);
            
         }

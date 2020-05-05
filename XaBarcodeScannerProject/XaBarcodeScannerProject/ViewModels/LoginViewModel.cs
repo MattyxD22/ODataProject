@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNet.SignalR.Client;
+using Microsoft.AspNetCore.SignalR;
+using Microsoft.AspNetCore.SignalR.Client;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +14,16 @@ namespace XaBarcodeScannerProject.ViewModels
 	{
 		private string userEmail;
 		bool isValid = false;
+
+		Microsoft.AspNetCore.SignalR.Client.HubConnection hubConnection;
+
+		public LoginViewModel()
+		{
+			hubConnection = new HubConnectionBuilder()
+			.WithUrl("https://projectnavision20200502131207.azurewebsites.net/chatHub")
+			.Build();
+			Connect();
+		}
 
 
 		public string UserEmail
@@ -56,6 +69,23 @@ namespace XaBarcodeScannerProject.ViewModels
 			App.Current.MainPage = new ScannerPageView();
 		}
 
+		async Task Connect()
+		{
+			try
+			{
+				Console.WriteLine("Is connected");
+				await hubConnection.StartAsync();
 
-    }
+				//call the LoginMethod from the hubClass
+				//await hubConnection.InvokeAsync("Echo", user, message);
+
+				//
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine("ConnectMethod Error: " + e.Message);
+			}
+
+		}
+	}
 }

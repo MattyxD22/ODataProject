@@ -14,18 +14,21 @@ namespace projectNavision.Controllers
 {
     public class ChatHub : Hub
     {
-        CustomerPageRema customer;
-        CustomerPageRema_Filter nameFilter = new CustomerPageRema_Filter();
-        List<CustomerPageRema_Filter> filterArray = new List<CustomerPageRema_Filter>();
-        public async Task<string> CodeUnit(string customerID)
+        RemaCustomerCodeUnit_Port test = null;
+        GetCustomerName_Result result = null;
+        
+
+
+        public async Task CodeUnit(string customerID)
         {
-            RemaCustomerCodeUnit_Port test = null;
-            GetCustomerName_Result result = null;
+           
+            test = new RemaCustomerCodeUnit_PortClient();
+            result = await test.GetCustomerNameAsync(new GetCustomerName(customerID));
+
             //try
             //{
+
                 
-            //    test = new RemaCustomerCodeUnit_PortClient();
-            //    result = await test.GetCustomerNameAsync(new GetCustomerName(customerID));
             //}
             //catch (Exception ex)
             //{
@@ -33,17 +36,14 @@ namespace projectNavision.Controllers
             //    Console.WriteLine("Error: " + ex.Message);
             //}
 
-            test = new RemaCustomerCodeUnit_PortClient();
-            result = await test.GetCustomerNameAsync(new GetCustomerName(customerID));
 
-            Console.WriteLine(result.return_value);
-            await Clients.All.SendAsync(result.return_value);
-            return result.return_value;
-            
-            
-            //await Clients.All.SendAsync("Message sent: " + test.ToString());
+
+            Console.WriteLine(Clients.All.SendAsync(result.return_value));
+            await Clients.All.SendAsync("Message sent: " + result.return_value);
             
 
+            //return result.return_value;
+          
 
         }
 
@@ -59,10 +59,29 @@ namespace projectNavision.Controllers
             Console.WriteLine(Clients.Client(Context.ConnectionId).SendAsync("echo", name, message + " (echo from server)"));
         }
 
-        public async Task JoinChat(int ID)
+        public async void TestIvoke()
         {
-            await Clients.All.SendAsync("JoinChat", ID);
+            Clients.All.SendAsync("Test Invoke virker??");
+            Console.WriteLine(Clients.All.SendAsync("Test Invoke virker??"));
+            test = new RemaCustomerCodeUnit_PortClient();
+            result = await test.GetCustomerNameAsync(new GetCustomerName("1"));
+            Console.WriteLine(result);
+        }
+
+        public async Task SendMessage(string user, string message)
+        {
+            //test = new RemaCustomerCodeUnit_PortClient();
+            //result = await test.GetCustomerNameAsync(new GetCustomerName(user));
+            //Console.WriteLine(test.GetCustomerNameAsync(new GetCustomerName(user)));
+            await Clients.All.SendAsync("ReceiveMessage", user, message);
+        }
+
+        public async Task JoinChat(string ID)
+        {
+            await Clients.All.SendAsync("JoinChat" + " Server...", ID);
             Console.WriteLine(Clients.All.SendAsync("JoinChat", ID));
+            
+            
             //RemaCustomerCodeUnit_Port test = null;
             //GetCustomerName_Result result = null;
             //try
@@ -83,49 +102,5 @@ namespace projectNavision.Controllers
 
 
 
-        //[Route("[controller]")]
-
-        //[HttpGet("{id}")]
-        //public async Task<string> GetStudent(int id)
-        //{
-        //    StudentSOAP.Student_PortClient test = new StudentSOAP.Student_PortClient();
-        //    var result = await test.GetStudentAsync();
-        //    Student studentBuilder = new Student();
-
-
-
-
-        //    return result.ToString();
-        //}
-
-        //private readonly ILogger<HubClass> _logger;
-
-        //public HubClass(ILogger<HubClass> logger)
-        //{
-        //    _logger = logger;
-        //}
-
-        //static void PrintCustomerList(CustomerPageRema_Service service, List<CustomerPageRema_Filter> filter)
-        //{
-        //    Msg("Printing Customer List");
-
-        //    // Runs the actual search.
-        //    CustomerPageRema[] list = service.ReadMultiple(filter.ToArray(), null, 100);
-        //    foreach (CustomerPageRema c in list)
-        //    {
-        //        PrintCustomer(c);
-        //    }
-        //    Msg("End of List");
-        //}
-
-        static void PrintCustomer(CustomerPageRema c)
-        {
-            Console.WriteLine("No: {0} Name: {1}", c.ID, c.FirstName);
-        }
-
-        static void Msg(string msg)
-        {
-            Console.WriteLine(msg);
-        }
     }
 }

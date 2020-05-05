@@ -9,6 +9,7 @@
         <StackLayout>           
             <Label Text="{Binding ScannedCode}"/>
             <Button Text="Scan with Code behind" Clicked="Button_Clicked"></Button>
+            <Button Text="Add item to basket" Command="{Binding BasketCMD}"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

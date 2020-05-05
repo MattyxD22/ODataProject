@@ -4,7 +4,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "https://projectnavision20200502131207.azurewebsites.net",
+      "applicationUrl": "https://localhost:44379",
       "sslPort": 44379
     }
   },
@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "HubClass",
+      "launchUrl": "chatHub",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,11 +20,21 @@
     "projectNavision": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "HubClass",
-      "applicationUrl": "https://projectnavision20200502131207.azurewebsites.net",
+      "launchUrl": "chatHub",
+      "applicationUrl": "https://localhost:44379",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
-  }
+  },
+    "Logging": {
+      "LogLevel": {
+        "Default": "Debug",
+        "System": "Information",
+        "Microsoft": "Information"
+      },
+      "Console": {
+        "IncludeScopes": "true"
+      }
+    }
 }
