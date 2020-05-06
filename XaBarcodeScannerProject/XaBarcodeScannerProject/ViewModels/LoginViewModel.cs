@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNet.SignalR.Client;
-using Microsoft.AspNetCore.SignalR;
-using Microsoft.AspNetCore.SignalR.Client;
+﻿using Microsoft.AspNetCore.SignalR.Client;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,16 +13,29 @@ namespace XaBarcodeScannerProject.ViewModels
 		private string userEmail;
 		bool isValid = false;
 
-		Microsoft.AspNetCore.SignalR.Client.HubConnection hubConnection;
+		HubConnection hubConnection;
 
 		public LoginViewModel()
 		{
+			CreateNewUserCMD = new Command(async () => { await CreateUser(); });
+			
+
 			hubConnection = new HubConnectionBuilder()
-			.WithUrl("https://projectnavision20200502131207.azurewebsites.net/chatHub")
+			.WithUrl("https://localhost:5000/Controllers")
 			.Build();
-			Connect();
+
+			//since connection cant be made the Connect() method gets outcommented
+			//Connect();
+
+			hubConnection.On<string>("LoginCU", (reply) =>
+			{
+				Console.WriteLine("Loggin passed");
+				//LoginPassed();
+			});
+
 		}
 
+		public Command CreateNewUserCMD { get; }
 
 		public string UserEmail
 		{
@@ -55,14 +66,27 @@ namespace XaBarcodeScannerProject.ViewModels
 
 		public async Task AuthUser(string username, string password)
 		{
+			//Test/debug condition
 			if (username == "a" && password == "b")
 			{
+				//call the LoginMethod from the hubClass
+				//await hubConnection.InvokeAsync("LoginCU", username, password);
+
+				//Should normally be handled by an event
 				await App.Current.MainPage.DisplayAlert("Notification", "Success", "Okay");
 				
 				isValid = true;
 
+				//The connection should probably be closed again
+				//await hubConnection.StopAsync();
 			}
 		}
+
+		async Task CreateUser()
+		{
+
+		}
+
 
 		public void LoginPassed()
 		{
@@ -76,10 +100,6 @@ namespace XaBarcodeScannerProject.ViewModels
 				Console.WriteLine("Is connected");
 				await hubConnection.StartAsync();
 
-				//call the LoginMethod from the hubClass
-				//await hubConnection.InvokeAsync("Echo", user, message);
-
-				//
 			}
 			catch (Exception e)
 			{

@@ -5,21 +5,40 @@ using Xamarin.Forms;
 using XaBarcodeScannerProject.Views;
 using ZXing.Net.Mobile.Forms;
 using System.Threading.Tasks;
-using Microsoft.AspNet.SignalR.Client;
 using Microsoft.AspNetCore.SignalR.Client;
 
 namespace XaBarcodeScannerProject.ViewModels
 {
    public class ScannerPageViewModel : BaseViewModel
     {
-        Microsoft.AspNetCore.SignalR.Client.HubConnection hubConnection;
+        HubConnection hubConnection;
         public ScannerPageViewModel()
         {
             BasketCMD = new Command(async () => { await AddScannedItem(ScannedCode); });
 
+
             hubConnection = new HubConnectionBuilder()
-            .WithUrl("https://projectnavision20200502131207.azurewebsites.net/chatHub")
+            .WithUrl("https://localhost:5000/Controllers")
             .Build();
+
+            //Connect to the backend
+            //Connect();
+
+            //Event handlers from events that are fired from the backend
+            hubConnection.On<string>("ItemName", (itemName) =>
+            {
+                Console.WriteLine(itemName);
+                ScannedItem = itemName;
+
+            });
+
+            hubConnection.On<string>("ItemPrice", (itemPrice) =>
+            {
+                Console.WriteLine(itemPrice);
+                ScannedPrice = itemPrice;
+
+            });
+
         }
 
         private string scannedCode;
@@ -31,7 +50,23 @@ namespace XaBarcodeScannerProject.ViewModels
             { scannedCode = value;
               OnPropertyChanged();
             }
-        }                      
+        }
+
+        private string scannedItem;
+
+        public string ScannedItem
+        {
+            get { return scannedItem; }
+            set { scannedItem = value; }
+        }
+
+        private string scannedPrice;
+
+        public string ScannedPrice
+        {
+            get { return scannedPrice; }
+            set { scannedPrice = value; }
+        }
 
         public async void OnScanClicked(ZXing.Result result)
         {
@@ -43,9 +78,23 @@ namespace XaBarcodeScannerProject.ViewModels
         public async Task AddScannedItem(string barcode)
         {
             //Call the code unit from the hubclass
-            //await hubconnection.InvokeAsync();
+            //await hubconnection.InvokeAsync("ItemName", barcode);
+            //await hubconnection.InvokeAsync("ItemPrice", barcode);
         }
 
+        async Task Connect()
+        {
+            try
+            {
+                await hubConnection.StartAsync();
+                Console.WriteLine("Is connected");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ConnectMethod Error: " + e.Message);
+               
+            }
+        }
 
     }
 }

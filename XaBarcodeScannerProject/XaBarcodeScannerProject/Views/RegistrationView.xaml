@@ -19,7 +19,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <Label  Grid.Column="1" Grid.Row="0" Text="Registration Page" FontSize="25" TextColor="Black" HorizontalOptions="Center"/>
+        <!--<Label  Grid.Column="1" Grid.Row="0" Text="Registration Page" FontSize="25" TextColor="Black" HorizontalOptions="Center"/>-->
 
         <StackLayout Grid.Column="1" Grid.Row="1">
             <Entry Placeholder="Firstname" Text="{Binding FirstNameRVM}"/>

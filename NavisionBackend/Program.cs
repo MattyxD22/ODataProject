@@ -25,6 +25,7 @@ namespace NavisionBackend
             string url = "http://localhost:44379";
             using (WebApp.Start(url))
             {
+                
                 Console.WriteLine("Server running on {0}", url);
                 Console.WriteLine(myHub.CodeUnit("1"));
 
@@ -39,16 +40,19 @@ namespace NavisionBackend
     {
         public void Configuration(IAppBuilder app)
         {
-            app.UseCors(CorsOptions.AllowAll);
-            app.MapSignalR();
             
-
-            app.UseRouting();
-            app.UseEndpoints(endpoints =>
+            app.MapSignalR();
+            app.Map("/MyHub", map =>
             {
-                endpoints.MapHub<ChatHub>("/chathub");
-            });
+                app.UseCors(CorsOptions.AllowAll);
+                var hubConfiguration = new HubConfiguration
+                {
 
+                };
+
+                hubConfiguration.EnableDetailedErrors = true;
+                map.RunSignalR(hubConfiguration);
+            });
         }
     }
     public class MyHub : Hub

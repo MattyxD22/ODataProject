@@ -4,39 +4,27 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "https://localhost:5000",
-      "sslPort": 44379
+      "applicationUrl": "http://localhost:62148",
+      "sslPort": 44365
     }
   },
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "Controllers",
+      "launchUrl": "weatherforecast",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "projectNavision": {
+    "WebApplication1": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "Controllers",
-      "applicationUrl": "https://localhost:5000",
+      "launchUrl": "weatherforecast",
+      "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
-  },
-    "Logging": {
-      "LogLevel": {
-        "Default": "Debug",
-        "System": "Information",
-        "Microsoft": "Information",
-        "Microsoft.AspNetCore.SignalR": "Debug",
-        "Microsoft.AspNetCore.Http.Connections": "Debug"
-      },
-      "Console": {
-        "IncludeScopes": "true"
-      }
-    }
+  }
 }

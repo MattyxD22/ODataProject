@@ -10,6 +10,73 @@
             <Label Text="{Binding ScannedCode}"/>
             <Button Text="Scan with Code behind" Clicked="Button_Clicked"></Button>
             <Button Text="Add item to basket" Command="{Binding BasketCMD}"></Button>
+
+            <ListView 
+                x:Name="ListViewReceipt"
+                ItemsSource="{Binding Products}"
+                VerticalOptions="Center" 
+                HorizontalOptions="CenterAndExpand"
+                HasUnevenRows="True"
+             
+                Grid.Row="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell 
+                            Height="40">
+                            <Grid>
+
+
+                                <Label 
+                                    Grid.ColumnSpan="3" 
+                                    BackgroundColor="LightCoral" 
+                                    Text="{Binding Name}"
+                                    />
+
+                                <Label 
+                                    Grid.Column="3" 
+                                    Grid.ColumnSpan="2"
+                                    Text="{Binding Price}" 
+                                    BackgroundColor="LightBlue"
+                                    />
+                                <Button 
+                                    Grid.Column="5"
+                                    Text="+"
+                                    FontSize="Medium"
+                                    BackgroundColor="Gainsboro" 
+                                    Command="{Binding Source={x:Reference RecieptPage},Path=BindingContext.IncreaseAmountCMD}"
+                                    />
+                                <Label  
+                                    Grid.Column="6" 
+                                    Text="{Binding Source={x:Reference RecieptPage},Path=BindingContext.ItemAmount}" 
+                                    HorizontalOptions="EndAndExpand"
+                                    />
+                                <Button  
+                                    Grid.Column="7" 
+                                    Text="-" 
+                                    FontSize="Medium" 
+                                    BackgroundColor="Gainsboro"
+                                    Command="{Binding Source={x:Reference RecieptPage},Path=BindingContext.DecreaseAmountCMD}"
+                                    />
+                                <Button 
+                                    Grid.Column="8" 
+                                    FontSize="Medium" 
+                                    BackgroundColor="Red" 
+                                    Text="x"  
+                                    Clicked="RemoveItem"
+                                    
+                                    />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Label 
+                Grid.Row="2"
+                Text="Total Price"
+                VerticalOptions="EndAndExpand"
+                />
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XaBarcodeScannerProject.Models;
 using XaBarcodeScannerProject.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -22,7 +23,7 @@ namespace XaBarcodeScannerProject.Views
         private async void Button_Clicked(object sender, EventArgs e)
         {
             var scan = new ZXingScannerPage();
-
+            
             await Navigation.PushAsync(scan);
 
             scan.OnScanResult += (result) =>
@@ -37,6 +38,14 @@ namespace XaBarcodeScannerProject.Views
                     });
                 };
         }
-       
+
+        private void RemoveItem(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            var product = button?.BindingContext as ProductsModel;
+            var vm = BindingContext as RecieptViewModel;
+            vm?.DelteItem.Execute(product);
+        }
+
     }
 }
